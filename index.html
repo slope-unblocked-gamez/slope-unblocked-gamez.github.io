@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#1f1c2c,#928dab);
+    color:white;
+    text-align:center;
+}
+
+.container{
+    max-width:600px;
+}
+
+h1{
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+p{
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.box{
+    background:rgba(255,255,255,0.1);
+    padding:20px;
+    border-radius:10px;
+    min-width:70px;
+}
+
+.box span{
+    display:block;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.label{
+    font-size:12px;
+    opacity:0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Coming Soon</h1>
+    <p>Our website is under construction. We'll launch soon.</p>
+
+    <div class="countdown">
+        <div class="box">
+            <span id="days">00</span>
+            <div class="label">Days</div>
+        </div>
+
+        <div class="box">
+            <span id="hours">00</span>
+            <div class="label">Hours</div>
+        </div>
+
+        <div class="box">
+            <span id="minutes">00</span>
+            <div class="label">Minutes</div>
+        </div>
+
+        <div class="box">
+            <span id="seconds">00</span>
+            <div class="label">Seconds</div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+const launchDate = new Date("Apr 30, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    const days = Math.floor(distance / (1000*60*60*24));
+    const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+    const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+    const seconds = Math.floor((distance % (1000*60))/1000);
+
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
+},1000);
+
+</script>
+
+</body>
+</html>
